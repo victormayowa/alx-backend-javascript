@@ -1,5 +1,7 @@
-#!usr/bin/node
+#!/usr/bin/node
 
-const displayMessage = arg => console.log(arg);
+function displayMessage(arg) {
+  console.log(arg);
+}
 
 module.exports = displayMessage;
