@@ -1,23 +1,19 @@
-// File: 1-stdin.js
+if (process.stdin.isTTY) {
+  process.stdin.setRawMode(false);
+} else {
+  process.on('exit', () => {
+    console.log('This important software is now closing');
+  });
+}
 
-console.log("Welcome to Holberton School, what is your name?");
-
-process.stdin.setEncoding('utf8');
-
-// Read the first line of input
+const prmpt = 'Welcome to Holberton School, what is your name?';
+console.log(prmpt);
 process.stdin.once('data', (data) => {
-  const input = data.trim();
+  process.stdout.write(`Your name is: ${data}`);
+  process.exit();
+});
 
-  if (input === 'exit') {
-    console.log("This important software is now closing");
-    process.exit();
-  } else {
-    console.log(`Your name is: ${input}`);
-    // Check if input is coming from a pipe (piped input)
-    if (!process.stdin.isTTY) {
-      console.log("This important software is now closing");
-      process.exit();
-    }
-	  process.exit();
-  }
+process.on('SIGINT', () => {
+  console.log('This important software is now closing');
+  process.exit();
 });
