@@ -5,7 +5,7 @@ const http = require('http');
 // Create HTTP server
 const app = http.createServer((req, res) => {
   // Set response headers
-  res.write('Hello Holberton School!\n');
+  res.write('Hello Holberton School!');
 
   // Send response body
   res.end();
