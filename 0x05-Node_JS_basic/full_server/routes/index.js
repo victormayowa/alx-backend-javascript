@@ -1,13 +1,11 @@
-// full_server/routes/index.js
-
-const express = require('express');
-const AppController = require('../controllers/AppController');
-const StudentsController = require('../controllers/StudentsController');
+import express from 'express';
+import AppCtrl from '../controllers/AppController';
+import StdCtrl from '../controllers/StudentsController';
 
 const router = express.Router();
 
-router.get('/', AppController.getHomepage);
-router.get('/students', StudentsController.getAllStudents);
-router.get('/students/:major', StudentsController.getAllStudentsByMajor);
+router.use('/', AppCtrl.getHomepage);
+router.use('/students', StdCtrl.getAllStudents);
+router.use('/students/:major', StdCtrl.getAllStudentsByMajor);
 
-module.exports = router;
+export default router;
